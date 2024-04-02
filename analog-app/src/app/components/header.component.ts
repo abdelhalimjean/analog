@@ -156,5 +156,6 @@ export class HeaderComponent {
 		{ name: "Angular", slug: "angular" },
 		{ name: "React", slug: "react" },
 		{ name: "Vue", slug: "vue" },
+		{ name: "Svelte", slug: "svelte" },
 	];
 }
