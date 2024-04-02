@@ -9,6 +9,9 @@ export default defineConfig(({ mode }) => ({
   build: {
     target: ['es2020'],
   },
+  ssr: {
+    noExternal: ['@apollo/**'],
+  },
   resolve: {
     mainFields: ['module'],
   },
