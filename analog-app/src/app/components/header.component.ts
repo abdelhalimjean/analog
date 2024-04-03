@@ -1,5 +1,9 @@
-import { Component } from "@angular/core";
-import { RouterLink } from "@angular/router";
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
+import { Subscription } from "rxjs";
+import { BlogInfo, BlogLinks } from "../models/blog-info";
+import { SeriesList } from "../models/post";
+import { BlogService } from "../services/blog.service";
 
 @Component({
 	selector: "app-header",
@@ -75,7 +79,7 @@ import { RouterLink } from "@angular/router";
 			}
 
 			.toolbar-row.second {
-        padding: 0.5rem 0;
+				padding: 0.5rem 0;
 				border-bottom: 1px solid #80808050;
 			}
 
@@ -143,20 +147,35 @@ import { RouterLink } from "@angular/router";
 				padding: 0.7rem 0 0;
 			}
 
-      .series-link {
-        font-size: 1.1rem;
-        text-transform: uppercase;
-        margin: 0 0.4rem;
-      }
+			.series-link {
+				font-size: 1.1rem;
+				text-transform: uppercase;
+				margin: 0 0.4rem;
+			}
 		`,
 	],
 })
-export class HeaderComponent {
-	seriesList = [
-		{ name: "Angular", slug: "angular" },
-		{ name: "React", slug: "react" },
-		{ name: "Vue", slug: "vue" },
-		{ name: "Svelte", slug: "svelte" },
-		{ name: "Qwik", slug: "qwik" },
-	];
+export class HeaderComponent implements OnInit, OnDestroy {
+	blogURL!: string;
+	blogInfo!: BlogInfo;
+	blogName: string = "";
+	// start with default image to prevent 404 when returning from post-details page
+	blogImage: string = "/assets/images/anguhashblog-logo-purple-bgr.jpg";
+	blogSocialLinks!: BlogLinks;
+	seriesList!: SeriesList[];
+	blogService: BlogService = inject(BlogService);
+	private querySubscription?: Subscription;
+
+	ngOnInit(): void {
+    this.blogURL = this.blogService.getBlogURL();
+		this.querySubscription = this.blogService
+			.getSeriesList(this.blogURL)
+			.subscribe((data) => {
+				this.seriesList = data;
+			});
+	}
+
+	ngOnDestroy(): void {
+		this.querySubscription?.unsubscribe();
+	}
 }
