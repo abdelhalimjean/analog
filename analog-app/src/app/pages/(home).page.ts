@@ -34,7 +34,7 @@ import { Observable } from "rxjs";
 	styles: [
 		`
 			.posts-view {
-				width: 70vw;
+				width: 80vw;
 				min-height: 67.2vh;
 				padding: 0.5rem 0;
 				margin: 0 auto 2rem;
