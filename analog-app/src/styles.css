@@ -62,7 +62,7 @@ button:focus-visible {
 
 .card {
   background-color: #000;
-  width: 20vw;
+  width: 23vw;
   margin: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 0 1px 1px #0000001f;
@@ -72,7 +72,7 @@ button:focus-visible {
 
 .card .card-image {
   width: 100%;
-  height: 10rem;
+  height: 13rem;
 }
 
 .card .card-image img {
