@@ -62,8 +62,13 @@ button:focus-visible {
   outline: 3px auto -webkit-focus-ring-color;
 }
 
+app-svg-icon svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
 .card {
-  background-color: #000;
+  background-color: #252525;
   width: 23vw;
   margin: 1rem;
   border-radius: 0.5rem;
