@@ -1,6 +1,6 @@
-import { injectContent } from "@analogjs/content";
+import { isPlatformBrowser } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
-import { Injectable, inject } from "@angular/core";
+import { Inject, Injectable, PLATFORM_ID, inject } from "@angular/core";
 import { Observable, catchError, map, of } from "rxjs";
 
 @Injectable({
@@ -8,11 +8,18 @@ import { Observable, catchError, map, of } from "rxjs";
 })
 export class IconService {
   http: HttpClient = inject(HttpClient);
+  private baseUrl!: string;
 
   private iconCache = new Map<string, string>();
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.baseUrl = isPlatformBrowser(this.platformId)
+      ? window.location.origin
+      : 'http://localhost:5173';
+  }
+
   getIcon(key: string): Observable<string> {
-    const path = `http://localhost:5173/icons/${key.toLowerCase()}.svg`;
+    const path = `${this.baseUrl}/icons/${key.toLowerCase()}.svg`;
 
     if (this.iconCache.has(path)) {
       return of(this.iconCache.get(path) || '');
