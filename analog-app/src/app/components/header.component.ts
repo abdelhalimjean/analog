@@ -36,7 +36,11 @@ import { BlogService } from "../services/blog.service";
 								<span class="material-symbols-outlined"> settings </span>
 							</button>
 						</div>
-						<div class="theme-control"></div>
+						<div class="theme-control">
+							<button>
+								<span class="material-symbols-outlined"> dark_mode </span>
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -66,7 +70,7 @@ import { BlogService } from "../services/blog.service";
 	styles: [
 		`
 			.toolbar {
-        background-color: #000;
+				background-color: #262626;
 				position: relative;
 				padding: 1rem;
 				z-index: 3;
@@ -77,6 +81,7 @@ import { BlogService } from "../services/blog.service";
 					justify-content: space-between;
 
 					&.second {
+						padding: 0.2rem 0 0.5rem;
 						border-bottom: 1px solid #80808050;
 					}
 
