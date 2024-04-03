@@ -66,91 +66,100 @@ import { BlogService } from "../services/blog.service";
 	styles: [
 		`
 			.toolbar {
-				background-color: #1f1f1f;
 				position: relative;
 				padding: 1rem;
 				z-index: 3;
-			}
 
-			.toolbar-row {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-			}
+				.toolbar-row {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
 
-			.toolbar-row.second {
-				padding: 0.5rem 0;
-				border-bottom: 1px solid #80808050;
-			}
+					&.second {
+						border-bottom: 1px solid #80808050;
+					}
 
-			.toolbar-row .toolbar-row-start {
-				display: flex;
-			}
+					.toolbar-row-start {
+						display: flex;
 
-			.toolbar-row-start .logo-image {
-				width: 3rem;
-				height: 3rem;
-				margin-right: 0.5rem;
-				border-radius: 50%;
-			}
+						.logo-image {
+							width: 3rem;
+							height: 3rem;
+							margin-right: 0.5rem;
+							border-radius: 50%;
+						}
 
-			.toolbar-row-start .menu {
-				display: flex;
-				align-items: center;
-				margin-right: 0.7rem;
-				cursor: pointer;
-			}
+						.menu {
+							display: flex;
+							align-items: center;
+							margin-right: 0.7rem;
+							cursor: pointer;
+						}
 
-			.toolbar-row-start .blog-title {
-				display: flex;
-				align-items: center;
-				cursor: pointer;
-			}
+						.blog-title {
+							display: flex;
+							align-items: center;
+							cursor: pointer;
 
-			.toolbar-row-start .blog-title h1 {
-				font-size: 1.3rem;
-				font-weight: 400;
-				margin: 0;
-			}
+							h1 {
+								font-size: 1.3rem;
+								font-weight: 400;
+								margin: 0;
+							}
+						}
 
-			.social {
-				display: flex;
-				align-items: flex-start;
-				justify-content: center;
-				margin: 0.8rem 0 0.5rem;
-			}
+						.social {
+							display: flex;
+							align-items: flex-start;
+							justify-content: center;
+							margin: 0.8rem 0 0.5rem;
 
-			.controls {
-				display: flex;
-				gap: 0.3rem;
-			}
+							.social-link {
+								display: flex;
 
-			.controls span {
-				font-size: 1.4rem;
-			}
+								a {
+									margin: 0 0.4rem;
+								}
+							}
+						}
+					}
 
-			.theme-control {
-				display: flex;
-				align-items: center;
-			}
+					.toolbar-row-end {
+						.controls {
+							display: flex;
 
-			.follow button {
-				font-size: 1.1rem;
-				padding: 0.3rem 1.1rem;
-				border-radius: 2rem;
-			}
+							div {
+								padding: 0 0.2rem;
+							}
 
-			.series {
-				display: flex;
-				justify-content: center;
-				width: 100%;
-				padding: 0.7rem 0 0;
-			}
+							.theme-control {
+								display: flex;
+								align-items: center;
+							}
+						}
 
-			.series-link {
-				font-size: 1.1rem;
-				text-transform: uppercase;
-				margin: 0 0.4rem;
+						.follow {
+							button {
+								font-size: 1.1rem;
+								padding: 0.3rem 1.1rem;
+								border-radius: 2rem;
+							}
+						}
+					}
+
+					.series {
+						display: flex;
+						justify-content: center;
+						width: 100%;
+						padding: 0.7rem 0 0;
+
+						.series-link {
+							font-size: 1.1rem;
+							text-transform: uppercase;
+							margin: 0 0.4rem;
+						}
+					}
+				}
 			}
 		`,
 	],
@@ -167,7 +176,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 	private querySubscription?: Subscription;
 
 	ngOnInit(): void {
-    this.blogURL = this.blogService.getBlogURL();
+		this.blogURL = this.blogService.getBlogURL();
 		this.querySubscription = this.blogService
 			.getSeriesList(this.blogURL)
 			.subscribe((data) => {
