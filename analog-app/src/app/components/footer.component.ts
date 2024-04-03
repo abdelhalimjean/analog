@@ -13,7 +13,7 @@ import { Component } from "@angular/core";
 	styles: [
 		`
 			footer {
-        background-color: #1f1f1f;
+        background-color: #000;
 				display: flex;
 				flex-wrap: wrap;
 				align-items: center;
