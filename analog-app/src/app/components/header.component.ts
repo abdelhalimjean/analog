@@ -66,6 +66,7 @@ import { BlogService } from "../services/blog.service";
 	styles: [
 		`
 			.toolbar {
+        background-color: #000;
 				position: relative;
 				padding: 1rem;
 				z-index: 3;

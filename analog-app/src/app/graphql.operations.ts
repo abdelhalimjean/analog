@@ -27,6 +27,7 @@ export const GET_BLOG_INFO = gql`
 export const GET_AUTHOR_INFO = gql`
 	query Publication($host: String!) {
 		publication(host: $host) {
+			id
 			author {
 				id
 				username
@@ -48,12 +49,12 @@ export const GET_AUTHOR_INFO = gql`
 `;
 
 export const GET_POSTS = gql`
-	query Publication($host: String!, $after: String!) {
+	query Publication($host: String!) {
 		publication(host: $host) {
 			id
 			isTeam
 			title
-			posts(first: 10, after: $after) {
+			posts(first: 10) {
 				edges {
 					node {
 						id
@@ -67,10 +68,6 @@ export const GET_POSTS = gql`
 							html
 						}
 					}
-				}
-				pageInfo {
-					endCursor
-					hasNextPage
 				}
 			}
 		}
@@ -96,13 +93,13 @@ export const GET_SERIES_LIST = gql`
 `;
 
 export const GET_POSTS_IN_SERIES = gql`
-	query Publication($host: String!, $slug: String!, $after: String!) {
+	query Publication($host: String!, $slug: String!) {
 		publication(host: $host) {
 			id
 			isTeam
 			title
 			series(slug: $slug) {
-				posts(first: 10, after: $after) {
+				posts(first: 10) {
 					edges {
 						node {
 							id
@@ -112,10 +109,6 @@ export const GET_POSTS_IN_SERIES = gql`
 								url
 							}
 						}
-					}
-					pageInfo {
-						endCursor
-						hasNextPage
 					}
 				}
 			}
@@ -136,7 +129,7 @@ export const GET_SINGLE_POST = gql`
 					name
 				}
 				author {
-					id
+          id
 					name
 					profilePicture
 				}
@@ -147,6 +140,33 @@ export const GET_SINGLE_POST = gql`
 					html
 				}
 				publishedAt
+			}
+		}
+	}
+`;
+
+export const SEARCH_POSTS = gql`
+	query SearchPostsOfPublicationFilter(
+		$publicationId: ObjectId!
+		$query: String!
+	) {
+		searchPostsOfPublication(
+			first: 5
+			filter: { publicationId: $publicationId, query: $query }
+		) {
+			edges {
+				node {
+					id
+					slug
+					coverImage {
+						url
+					}
+					author {
+						name
+					}
+					publishedAt
+					title
+				}
 			}
 		}
 	}
