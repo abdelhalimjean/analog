@@ -6,8 +6,8 @@ All types of contributions are encouraged and valued. Please make sure to read t
 
 - [Code of Conduct](#code-of-conduct)
 - [Question or Problem?](#question-or-problem)
-- [Issues and Bugs](#found-a-bug)
-- [Feature Requests](#missing-a-feature)
+- [Features vs Bugs](#features-vs-bugs)
+- [For all Issues](#for-all-issues)
 - [Submission Guidelines](#submission-guidelines)
 - [Coding Rules](#coding-rules)
 - [Commit Message Guidelines](#commit-message-guidelines)
@@ -38,7 +38,8 @@ Not all issues are bug fixes! Please understand the difference between a Feature
 - **FEATURE** - when you are implementing something new that has not been worked on before
 - **BUG** - when you are correcting something that has been worked on before but is not functioning as intended
 
-## For all issues - first open an issue and outline your proposal so that it can be discussed.
+## For all Issues 
+### First open an issue and outline your proposal so that it can be discussed.
 
 This process allows us to better coordinate our efforts, prevent duplication of work, and help you to craft the change so that it is successfully accepted into the project.
 
