@@ -24,7 +24,7 @@ import { IconService } from "../services/icon.service";
 					<a routerLink="/" class="blog-title">
 						<img
 							class="logo-image"
-							src="/images/anguhashblog-logo-purple-bgr.jpg"
+							src="{{blogImage}}"
 							alt="logo"
 						/>
 					</a>
