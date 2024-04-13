@@ -31,10 +31,9 @@ export class AppComponent implements OnInit {
   private meta: Meta = inject(Meta);
 
   ngOnInit(): void {
-    this.meta.addTags([
-      { name: "image", content: "/assets/angular-anguhashblog-dark.jpg" },
-      { name: "description", content: "Analog Template for Hashnode Blogs" }
-    ]);
+    // this.meta.addTags([
+    //   { name: "image", content: "/assets/angular-anguhashblog-dark.jpg" },
+    //   { name: "description", content: "Analog Template for Hashnode Blogs" }
+    // ]);
   }
-
 }
