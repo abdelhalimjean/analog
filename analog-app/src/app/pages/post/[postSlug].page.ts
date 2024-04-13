@@ -189,7 +189,8 @@ export default class PostDetailsComponent implements OnInit, OnDestroy {
           this.postCoverImage = post.coverImage.url;
           this.meta.updateTag({
             name: "description",
-            content: post.title,
+            // content: post.title,
+            content: "Test description - non GraphQL response",
           });
           this.meta.updateTag({
             name: "image",
