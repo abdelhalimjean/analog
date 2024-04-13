@@ -164,6 +164,7 @@ export default class PostDetailsComponent implements OnInit, OnDestroy {
 	blogInfo!: BlogInfo;
 	blogName: string = "";
 	post$!: Observable<Post>;
+	postTitle!: string;
 	postCoverImage!: string;
 	private route = inject(ActivatedRoute);
 	private blogService = inject(BlogService);
@@ -183,16 +184,19 @@ export default class PostDetailsComponent implements OnInit, OnDestroy {
 		this.postSlug$.subscribe((slug) => {
 			if (slug !== null) {
 				this.post$ = this.blogService.getSinglePost(this.blogURL, slug);
+        this.post$.subscribe((post) => {
+          this.postTitle = post.title;
+          this.postCoverImage = post.coverImage.url;
+          this.meta.updateTag({
+            name: "description",
+            content: post.title,
+          });
+          this.meta.updateTag({
+            name: "image",
+            content: this.postCoverImage,
+          });
+        });
 			}
-		});
-
-		this.meta.updateTag({
-			name: "description",
-			content: "This is a blog post",
-		});
-		this.meta.updateTag({
-			name: "image",
-			content: "/assets/anguhashblog-logo-purple-bgr.jpg",
 		});
 	}
 
@@ -200,7 +204,7 @@ export default class PostDetailsComponent implements OnInit, OnDestroy {
 		this.querySubscription?.unsubscribe();
 		this.meta.updateTag({
 			name: "description",
-			content: "Angular Template for Hashnode Blogs",
+			content: "Analog Template for Hashnode Blogs",
 		});
 		this.meta.updateTag({
 			name: "image",

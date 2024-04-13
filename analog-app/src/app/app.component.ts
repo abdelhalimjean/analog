@@ -1,5 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
+"@angular/core";
+import { Meta } from "@angular/platform-browser";
 import { FooterComponent } from "./components/footer.component";
 import { HeaderComponent } from "./components/header.component";
 
@@ -25,4 +27,14 @@ import { HeaderComponent } from "./components/header.component";
 		`,
 	],
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  private meta: Meta = inject(Meta);
+
+  ngOnInit(): void {
+    this.meta.addTags([
+      { name: "image", content: "/assets/angular-anguhashblog-dark.jpg" },
+      { name: "description", content: "Analog Template for Hashnode Blogs" }
+    ]);
+  }
+
+}
